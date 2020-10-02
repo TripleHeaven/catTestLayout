@@ -26,10 +26,10 @@ input[type="checkbox"], input[type="radio"] {
 .block-list:checked ~ .block-list-imgT {
   display: inline;
 }
-.block-list:checked ~ .adaptiveList .product-wrapper .blockView{
+.block-list:checked ~ .adaptiveList .cat-wrapper .blockView{
  display: none;
 }
-.block-list:checked ~ .adaptiveList .product-wrapper {
+.block-list:checked ~ .adaptiveList .cat-wrapper {
  
   float: unset;
   width: 60%;
@@ -39,16 +39,16 @@ input[type="checkbox"], input[type="radio"] {
   padding-bottom: 15px;
  }
 
- .block-list:checked ~ .adaptiveList .product-wrapper .tableView{
+ .block-list:checked ~ .adaptiveList .cat-wrapper .tableView{
   display: inline;
   padding: 10px;
  }
- .block-list:checked ~ .adaptiveList .product-wrapper .tableView p{
+ .block-list:checked ~ .adaptiveList .cat-wrapper .tableView p{
   display: inline;
   position: relative;
   font-size: 1.4em;
  }
- .block-list:checked ~ .adaptiveList .product-wrapper .product-photo  {
+ .block-list:checked ~ .adaptiveList .cat-wrapper .cat-photo  {
   padding-bottom: 50%;
  max-height: 200px;
  }
@@ -57,20 +57,21 @@ input[type="checkbox"], input[type="radio"] {
   display: none;
 }
 /* Конец части про логику */
-.product-wrapper {
+.cat-wrapper {
 	display: block;
 	width: 100%;
 	float: left;  /* обтекание слева, помещаем элементы в одну строку, друг после друга */
   transition: width .8s;
   margin-bottom: 5px;
 }
-.product:hover {
+.cat:hover {
 	box-shadow: 0 0 5px 2px black;
 }
 body{
   background-image: url("./img/background.png");
 
 }
+/* Убираем дефолтные стили списков */
 A {
   text-decoration: none; 
  } 
@@ -86,55 +87,58 @@ A:visited{
 
 /* Медиа запросы, для изменения количества отображаемых плиток */
 @media only screen and (min-width: 450px) {
-	.product-wrapper {
+	.cat-wrapper {
 		width: 50%;
 	}
 }
 
 @media only screen and (min-width: 768px) {
-	.product-wrapper {
+	.cat-wrapper {
 		width: 33.333%;
 	}
 }
 
 @media only screen and (min-width: 1000px) {
-	.product-wrapper {
+	.cat-wrapper {
 		width: 25%;
 	}
 }
 @media only screen and (min-width: 2000px) {
-	.product-wrapper {
+	.cat-wrapper {
 		width: 14%;
 	}
 }
 /*  */
+/* Медиа запросы с видом списка */
 @media only screen and (min-width: 450px) {
-	.block-list:checked ~ .adaptiveList .product-wrapper {
+	.block-list:checked ~ .adaptiveList .cat-wrapper {
     width: 95%;
     min-width: 95%;
 	}
 }
 
 @media only screen and (min-width: 768px) {
-	.block-list:checked ~ .adaptiveList .product-wrapper {
+	.block-list:checked ~ .adaptiveList .cat-wrapper {
 		width: 75%;
 	}
 }
 
 @media only screen and (min-width: 1000px) {
-	.block-list:checked ~ .adaptiveList .product-wrapper {
+	.block-list:checked ~ .adaptiveList .cat-wrapper {
 		width: 80%;
 	}
 }
 @media only screen and (min-width: 2000px) {
-	.block-list:checked ~ .adaptiveList .product-wrapper {
+	.block-list:checked ~ .adaptiveList .cat-wrapper {
 		width: 100%;
 	}
 }
-.products {
-  margin-right: 30px;
+/*  */
+
+.adaptiveList{
+  margin-right: 30px;  /* Центрируем внутренние элементы */
 }
-.product {
+.cat {
 	display: block;
 	border: 1px solid #b5e9a7;
 	border-radius: 3px;
@@ -144,18 +148,15 @@ A:visited{
   margin-bottom: 10px;
 	text-decoration: none;
 	color: #474747;
-	z-index: 0;
   min-height: 310px;
-  
-  
 }
-.product-photo {
+.cat-photo {
 	position: relative;
 	padding-bottom: 100%;
 	overflow: hidden;
 }
 /* Структура не меняется - поэтому оптимальное решение - использование img */
-.product-photo img {
+.cat-photo img {
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -167,10 +168,11 @@ A:visited{
   transition: transform .8s ease-out;
   transition: max-width .8s ease-out;
 }
-.product-photo:hover img {
+.cat-photo:hover img {
   box-shadow: 0 0 5px 2px red;
 }
-.product p {
+/* p используется для удобства и для упрощения хтмл */
+.cat p {
 	position: relative;
 	margin: 0;
   line-height: 1.4em;
@@ -178,6 +180,7 @@ A:visited{
   overflow: hidden;
   padding-left: 4px;
 }
+/* Имя кота, показывается всегда и не затрагивается переключением вида отображения */
 .catName {
   font-size: 2em;
   text-overflow: ellipsis;
