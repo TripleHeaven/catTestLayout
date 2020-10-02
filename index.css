@@ -1,0 +1,184 @@
+
+input[type="checkbox"], input[type="radio"] {
+  position: absolute;
+  visibility: hidden;
+}
+/* Логика (переключение между таблицей и списком */
+.block-list-img{
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+}
+.block-list-imgT{
+  display: none;
+}
+.block-list-img img{
+ max-width: 30px;
+ max-height: 30px;
+}
+.block-list-imgT img{
+  max-width: 30px;
+  max-height: 30px;
+ }
+.block-list:checked ~ .block-list-img {
+  display: none;
+}
+.block-list:checked ~ .block-list-imgT {
+  display: inline;
+}
+.block-list:checked ~ .adaptiveList .product-wrapper .blockView{
+ display: none;
+}
+.block-list:checked ~ .adaptiveList .product-wrapper {
+ 
+  float: unset;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 60%;
+  padding-bottom: 15px;
+ }
+
+ .block-list:checked ~ .adaptiveList .product-wrapper .tableView{
+  display: inline;
+  padding: 10px;
+ }
+ .block-list:checked ~ .adaptiveList .product-wrapper .tableView p{
+  display: inline;
+  position: relative;
+  font-size: 1.4em;
+ }
+ .block-list:checked ~ .adaptiveList .product-wrapper .product-photo  {
+  padding-bottom: 50%;
+ max-height: 200px;
+ }
+
+.tableView{
+  display: none;
+}
+/* Конец части про логику */
+.product-wrapper {
+	display: block;
+	width: 100%;
+	float: left;  /* обтекание слева, помещаем элементы в одну строку, друг после друга */
+  transition: width .8s;
+  margin-bottom: 5px;
+}
+.product:hover {
+	box-shadow: 0 0 5px 2px black;
+}
+body{
+  background-image: url("./img/background.png");
+
+}
+A {
+  text-decoration: none; 
+ } 
+A:visited{
+  text-decoration: none;
+  color: black;
+}
+ A:hover { 
+  text-decoration: underline; 
+  color: blue; 
+ }
+ 
+
+/* Медиа запросы, для изменения количества отображаемых плиток */
+@media only screen and (min-width: 450px) {
+	.product-wrapper {
+		width: 50%;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.product-wrapper {
+		width: 33.333%;
+	}
+}
+
+@media only screen and (min-width: 1000px) {
+	.product-wrapper {
+		width: 25%;
+	}
+}
+@media only screen and (min-width: 2000px) {
+	.product-wrapper {
+		width: 14%;
+	}
+}
+/*  */
+@media only screen and (min-width: 450px) {
+	.block-list:checked ~ .adaptiveList .product-wrapper {
+    width: 95%;
+    min-width: 95%;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.block-list:checked ~ .adaptiveList .product-wrapper {
+		width: 75%;
+	}
+}
+
+@media only screen and (min-width: 1000px) {
+	.block-list:checked ~ .adaptiveList .product-wrapper {
+		width: 80%;
+	}
+}
+@media only screen and (min-width: 2000px) {
+	.block-list:checked ~ .adaptiveList .product-wrapper {
+		width: 100%;
+	}
+}
+.products {
+  margin-right: 30px;
+}
+.product {
+	display: block;
+	border: 1px solid #b5e9a7;
+	border-radius: 3px;
+	position: relative;
+	background: #fff;
+  margin-right: 10px;
+  margin-bottom: 10px;
+	text-decoration: none;
+	color: #474747;
+	z-index: 0;
+  min-height: 310px;
+  
+  
+}
+.product-photo {
+	position: relative;
+	padding-bottom: 100%;
+	overflow: hidden;
+}
+/* Структура не меняется - поэтому оптимальное решение - использование img */
+.product-photo img {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	max-width:95%;
+	max-height: 100%;
+	margin: auto;
+  transition: transform .8s ease-out;
+  transition: max-width .8s ease-out;
+}
+.product-photo:hover img {
+  box-shadow: 0 0 5px 2px red;
+}
+.product p {
+	position: relative;
+	margin: 0;
+  line-height: 1.4em;
+  height: 1.5em;
+  overflow: hidden;
+  padding-left: 4px;
+}
+.catName {
+  font-size: 2em;
+  text-overflow: ellipsis;
+}
